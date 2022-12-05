@@ -29,3 +29,27 @@ a {
     background: black;
   }
 }
+
+@layer utilities {
+  .scrollbar::-webkit-scrollbar {
+    width: 11px;
+    height: 15px;
+  }
+
+  .scrollbar::-webkit-scrollbar-track {
+    border-radius: 100vh;
+    
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb {
+    background: #64748B;
+    border-radius: 100vh;
+    
+ 
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #64748B;
+    
+  }
+}
