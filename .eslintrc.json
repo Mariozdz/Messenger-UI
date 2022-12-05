@@ -2,5 +2,10 @@
   "extends": [
     "next",
     "prettier"
-  ]
+  ],
+  "rules": {
+   "curly": "error",
+   "sort-imports": "off",
+   "no-unused-vars":  ["error", { "args": "none" }]
+  }
 }
