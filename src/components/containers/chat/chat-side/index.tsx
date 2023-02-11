@@ -31,21 +31,20 @@ export function ChatSide({
   });
 
   return (
-    <div className="hidden md:flex md:flex-col h-full w-full md:w-2/3 bg-gray-300 rounded-lg">
-      <Header
-        className="rounded-tr-lg"
-        image={dogImage}
-        title={selectedChat?.name}
-      />
+    <div className="hidden md:flex md:flex-col h-full w-full md:w-2/3 rounded-xl">
+      <Header image={dogImage} title={selectedChat?.name} />
 
-      <div className="h-full overflow-y-scroll scrollbar">
+      <div className="h-full overflow-hidden hover:overflow-y-scroll bg-back scrollbar bg-opacity-80">
         {chat.map((conversation) => (
           <MessageContainer
             message={conversation.message}
             isMine={conversation.userId === myId}
             key={v4()}
           >
-            <Message message={conversation.message} />
+            <Message
+              message={conversation.message}
+              isMine={conversation.userId === myId}
+            />
           </MessageContainer>
         ))}
         <div ref={messagesEndRef} />

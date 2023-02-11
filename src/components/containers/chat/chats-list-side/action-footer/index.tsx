@@ -13,7 +13,7 @@ export function ActionFooter({ handleInputSubmit }: ActionFooterProps) {
   });
 
   return (
-    <div className="flex h-24 bg-gray-100 px-8 mx-auto justify-between w-full items-center">
+    <div className="flex h-28 bg-back opacity-80 px-8 mx-auto justify-between w-full items-center border-t border-b border-gray-600 rounded-br-2xl">
       <div className="cursor-pointer">
         <FontAwesomeIcon
           icon={faFaceLaugh}
@@ -23,15 +23,16 @@ export function ActionFooter({ handleInputSubmit }: ActionFooterProps) {
           width={40}
         />
       </div>
-      <div className="flex items-center w-2/3 bg-white h-12 rounded-lg p-2">
-        <input
+      <div className="flex flex-grow items-center h-12 rounded-lg p-2 mx-16">
+        <textarea
           value={inputValue}
           onKeyDown={handleOnPressEnter}
           onChange={(value) => {
             setInputValue(value.target.value);
           }}
-          className="w-full border-none style-none border-0 outline-0"
-        ></input>
+          placeholder="Write something"
+          className="w-full border-none style-none border-0 outline-0 bg-back bg-opacity-80 text-white scrollbar resize-none"
+        />
       </div>
       <button
         className="flex items-center justify-center w-14 h-14 rounded-full p-2 bg-purple-500 shadow-lg cursor-pointer"

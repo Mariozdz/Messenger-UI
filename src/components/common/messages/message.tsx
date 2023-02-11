@@ -1,10 +1,18 @@
+import clsx from "clsx";
+
 type MessageProps = {
   message: string;
+  isMine: boolean;
 };
 
-export function Message({ message }: MessageProps) {
+export function Message({ message, isMine }: MessageProps) {
   return (
-    <div className=" h-full max-w-1/3 rounded-3xl py-3 px-6 bg-purple-500 text-white">
+    <div
+      className={clsx(
+        "h-full max-w-1/3 py-3 px-6 bg-message text-white rounded-b-2xl",
+        isMine ? "rounded-tl-2xl" : "rounded-tr-2xl"
+      )}
+    >
       {message}
     </div>
   );

@@ -14,7 +14,7 @@ export function Header({ image, title, className }: HeaderProps) {
     <div
       className={overrideTailwindClasses(
         clsx(
-          "flex flex-row w-full items-center py-5 px-4 bg-purple-600 shadow-lg border border-purple-500",
+          "flex flex-row w-full items-center py-12 px-4 bg-back shadow-lg border-b border-gray-600 rounded-tr-2xl bg-opacity-80",
           className
         )
       )}
@@ -24,7 +24,10 @@ export function Header({ image, title, className }: HeaderProps) {
           <Image src={image} className="rounded-full" alt="_#" />
         </div>
       </div>
-      {title && <div className="text-white">{title}</div>}
+      <div className="flex flex-col">
+        {title && <div className="text-white">{title}</div>}
+        {title && <div className="text-gray-600">Ultima vez el 22/22/22</div>}
+      </div>
     </div>
   );
 }
