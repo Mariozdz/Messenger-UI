@@ -11,12 +11,13 @@ export function MessageContainer({
   message,
   children,
 }: MessageContainerProps) {
-  if (isMine)
-    {return (
+  if (isMine) {
+    return (
       <div className="flex items-end justify-end px-4 py-2 w-full 0">
         {children}
       </div>
-    );}
+    );
+  }
 
   return <div className="flex items-start px-4 py-2 w-full 0">{children}</div>;
 }
