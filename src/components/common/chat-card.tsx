@@ -2,6 +2,8 @@ import Image from "next/image";
 import { IChat } from "src/shared/types/common/i-chat";
 import dogImage from "../../../public/images/doggi.jpg";
 import { overrideTailwindClasses } from "tailwind-override";
+import { faCheck, faCheckDouble } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 type IChatCardProps = {
   setChatSelected: (value: IChat) => void;
@@ -13,7 +15,7 @@ export function ChatCard({ setChatSelected, chat }: IChatCardProps) {
   return (
     <div
       className={overrideTailwindClasses(
-        "flex flex-row bg-white shadow-md hover:shadow-xl w-full h-28 rounded-3xl border border-gray-200 px-5 cursor-pointer"
+        "flex flex-row shadow-md w-full border-b border-gray-600 h-32 px-5 cursor-pointer"
       )}
       onClick={() => {
         setChatSelected(chat);
@@ -25,10 +27,21 @@ export function ChatCard({ setChatSelected, chat }: IChatCardProps) {
         </div>
       </div>
       <div className="flex flex-col w-full justify-center ml-4">
-        <div className="text-black font-bold text-xl">{chat.name}</div>
-        <div className=" text-lg"> {chat.message}</div>
+        <div className="text-white font-semibold text-xl">{chat.name}</div>
+        <div className=" text-lg text-gray-600"> {chat.message}</div>
       </div>
-      <div className="flex mt-6">{date.toTimeString().slice(0, 5)}</div>
+      <div className="flex flex-col items-center justify-center pr-3">
+        <div className="flex text-white">{date.toTimeString().slice(0, 5)}</div>
+        <div>
+          <FontAwesomeIcon
+            icon={faCheck}
+            className="text-green-400"
+            onClick={() => alert("chili se la come")}
+            size="2xl"
+            width={20}
+          />
+        </div>
+      </div>
     </div>
   );
 }
