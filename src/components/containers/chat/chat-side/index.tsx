@@ -10,12 +10,16 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFaceLaugh, faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 import { useChatSide } from "./use-chat-side";
 import { ActionFooter } from "../chats-list-side/action-footer";
+import clsx from "clsx";
+import Toggle from "@/components/common/toggle";
 
 type ChatSideProps = {
   selectedChat?: IChat;
   userId: string;
   myId: string;
   conversations: Conversation[];
+  handleOpenSettings: (value: boolean) => void;
+  settingsState: boolean;
 };
 
 export function ChatSide({
@@ -23,6 +27,8 @@ export function ChatSide({
   userId,
   myId,
   conversations,
+  handleOpenSettings,
+  settingsState,
 }: ChatSideProps) {
   const { chat, handleInputSubmit, messagesEndRef } = useChatSide({
     conversations,
@@ -31,8 +37,18 @@ export function ChatSide({
   });
 
   return (
-    <div className="hidden md:flex md:flex-col h-full w-full md:w-2/3 rounded-xl">
-      <Header image={dogImage} title={selectedChat?.name} />
+    <div
+      className={clsx(
+        "hidden md:flex md:flex-col h-full w-full md:w-2/3",
+        !settingsState ? "md:w-2/3" : "md:w-1/3"
+      )}
+    >
+      <Header
+        image={dogImage}
+        title={selectedChat?.name}
+        handleOpenSettings={handleOpenSettings}
+        settingsState={settingsState}
+      />
 
       <div className="h-full overflow-hidden hover:overflow-y-scroll bg-back scrollbar bg-opacity-80">
         {chat.map((conversation) => (

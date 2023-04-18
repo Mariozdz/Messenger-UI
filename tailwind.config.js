@@ -39,6 +39,14 @@ module.exports = {
         message: "#6E3AFF",
         read: "#2DDC73"
       },
+      spacing: {
+        '13': '3.25rem',
+        '15': '3.75rem',
+        '104': '26rem',
+        '112': '28rem',
+        '120': '30rem',
+        '128': '32rem',
+      }
     },
   },
   plugins: [],

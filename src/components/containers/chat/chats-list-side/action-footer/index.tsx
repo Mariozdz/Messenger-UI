@@ -13,7 +13,7 @@ export function ActionFooter({ handleInputSubmit }: ActionFooterProps) {
   });
 
   return (
-    <div className="flex h-28 bg-back opacity-80 px-8 mx-auto justify-between w-full items-center border-t border-b border-gray-600 rounded-br-2xl">
+    <div className="flex h-28 bg-back opacity-80 px-8 mx-auto justify-between w-full items-center border-t border-b border-gray-600">
       <div className="cursor-pointer">
         <FontAwesomeIcon
           icon={faFaceLaugh}

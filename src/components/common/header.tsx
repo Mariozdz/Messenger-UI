@@ -7,14 +7,22 @@ type HeaderProps = {
   image: StaticImageData;
   title?: ReactElement | string;
   className?: string;
+  handleOpenSettings: (value: boolean) => void;
+  settingsState: boolean;
 };
 
-export function Header({ image, title, className }: HeaderProps) {
+export function Header({
+  image,
+  title,
+  className,
+  handleOpenSettings = () => {},
+  settingsState = false,
+}: HeaderProps) {
   return (
     <div
       className={overrideTailwindClasses(
         clsx(
-          "flex flex-row w-full items-center py-12 px-4 bg-back shadow-lg border-b border-gray-600 rounded-tr-2xl bg-opacity-80",
+          "flex flex-row w-full items-center py-12 px-4 bg-back shadow-lg border-b border-gray-600 bg-opacity-80",
           className
         )
       )}
@@ -28,6 +36,10 @@ export function Header({ image, title, className }: HeaderProps) {
         {title && <div className="text-white">{title}</div>}
         {title && <div className="text-gray-600">Ultima vez el 22/22/22</div>}
       </div>
+      <button
+        className="w-32 bg-white h-6"
+        onClick={() => handleOpenSettings(!settingsState)}
+      />
     </div>
   );
 }
