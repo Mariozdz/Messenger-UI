@@ -1,9 +1,8 @@
 import { useState } from "react";
 import { ChatCard } from "src/components/common/chat-card";
-import { Header } from "src/components/common/header";
 import { IChat } from "src/shared/types/common/i-chat";
 import { v4 as uuidv4 } from "uuid";
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 
 import dogImage from "../../../../../public/images/doggi.jpg";
 import { ChatListHeader } from "./chat-list-header";
@@ -11,6 +10,7 @@ import clsx from "clsx";
 import { overrideTailwindClasses } from "tailwind-override";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEllipsis } from "@fortawesome/free-solid-svg-icons";
+import { CurrentUserHeader } from "@/components/common/headers/current-user-header";
 
 type ChatListSideProps = {
   onSelectChat: (value: IChat) => void;
@@ -44,15 +44,12 @@ export function ChatListSide({ onSelectChat }: ChatListSideProps) {
           )
         )}
       >
-        <div className="w-16">
-          <div className="rounded-full  w-16 h-16 bg-black">
-            <Image src={dogImage} className="rounded-full" alt="_#" />
-          </div>
-        </div>
-        <div className="flex flex-col flex-grow ml-3 text-lg font-semibold">
-          <div className="text-white">Perro pelón</div>
-          <div className="text-gray-400">Ingeniero</div>
-        </div>
+        <CurrentUserHeader
+          userName="Perro pelón"
+          lastTime="Ingeniero"
+          userPhoto={dogImage}
+        />
+
         <div>
           <div className="pl-4">
             <FontAwesomeIcon
@@ -66,10 +63,10 @@ export function ChatListSide({ onSelectChat }: ChatListSideProps) {
         </div>
       </div>
 
-      {/* <ChatListHeader
+      <ChatListHeader
         searchValue={inputValue}
         onChangeSearchValue={setInputValue}
-      /> */}
+      />
 
       <div className="overflow-hidden hover:overflow-y-scroll scrollbar bg-back bg-opacity-80">
         {chats.map((chat) => (

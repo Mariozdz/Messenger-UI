@@ -111,7 +111,7 @@ export function ChatLayout() {
           handleOpenSettings={setIsSideBarOpen}
           settingsState={isSideBarOpen}
         />
-        <SettingsSidebar isOpen={isSideBarOpen}/>
+        <SettingsSidebar isOpen={isSideBarOpen} />
       </div>
     </div>
   );

@@ -19,9 +19,6 @@ interface HomePageProps {
 }
 
 export default function Page({ userData, groups }: HomePageProps) {
-  console.log(userData);
-  console.log(groups);
-
   return <ChatLayout />;
 }
 
