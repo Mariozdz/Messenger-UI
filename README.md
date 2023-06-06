@@ -1,10 +1,10 @@
-This is a base project for a chat application made with the mere proposit of practice.
+This is a base project for a chat application (Front End and integration to go based backend) made with the mere proposit of practice.
 
 ## About the project
 
 It is a simple react project made with [Nextjs](https://nextjs.org/) framework, with the purpose of containing and structure the Front End for the base chat application.
 
-For the styles, this project is being contstructed with [Tailwind](https://tailwindcss.com/) CSS framework
+For the styles of the web app, [Tailwind](https://tailwindcss.com/) CSS framework is being used.
 
 ## Initialize
 
