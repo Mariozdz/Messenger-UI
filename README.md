@@ -4,7 +4,7 @@ This is a base project for a chat application (Front End and integration to go b
 
 It is a simple react project made with [Nextjs](https://nextjs.org/) framework, with the purpose of containing and structure the Front End for the base chat application.
 
-For the styles of the web app, [Tailwind](https://tailwindcss.com/) CSS framework is being used.
+[Tailwind](https://tailwindcss.com/) CSS framework is being used for the styles of the wep app.
 
 ## Initialize
 
