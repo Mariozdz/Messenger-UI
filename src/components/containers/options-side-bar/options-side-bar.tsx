@@ -12,7 +12,7 @@ export function OptionsSideBar() {
   return (
     <div
       className={clsx(
-        "flex flex-col justify-between w-40 pt-5 items-center bg-back bg-opacity-80"
+        "flex flex-col justify-between w-40 min-w-32 pt-5 items-center bg-back bg-opacity-80"
       )}
     >
       <div className="text-white text-5xl font-semibold">P.</div>

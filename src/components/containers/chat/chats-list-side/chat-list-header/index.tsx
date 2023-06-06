@@ -1,5 +1,3 @@
-import { faCirclePlus } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { TabButton } from "src/components/common/button/tab-buttons";
 import { SearchInput } from "src/components/common/input/search-input";
 

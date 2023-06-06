@@ -1,22 +1,14 @@
-import { useRouter } from "next/router";
-import { useState } from "react";
+import { useLoginForm } from "@/components/containers/forms/authentication/login/use-login-form";
 
 export function LoginForm() {
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [password, setPassword] = useState("");
+  const { phoneNumber, setPhoneNumber, password, setPassword, handleOnSubmit } =
+    useLoginForm();
 
-  const router = useRouter();
-
-  function handleOnSubmit(event: any) {
-    event.preventDefault();
-    router.push(`/chat?phone=${phoneNumber}`);
-  }
+  const pageMessage = "Let's log you in, welcome to the new chat";
 
   return (
     <div className="flex flex-col  transition duration-500 ease-in-out ">
-      <p className="text-3xl text-white mb-24">
-        Let's log you in, welcome to the new chat
-      </p>
+      <p className="text-3xl text-white mb-24">{pageMessage}</p>
 
       <div className="p-4 rounded-lg bg-black border border-gray-600">
         <input

@@ -1,26 +1,18 @@
-import { useEffect, useState } from "react";
-import { IChat } from "src/shared/types/common/i-chat";
-
+import { useState } from "react";
 import { ChatListSide } from "src/components/containers/chat/chats-list-side";
 import { ChatSide } from "src/components/containers/chat/chat-side";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faDownload } from "@fortawesome/free-solid-svg-icons";
-import clsx from "clsx";
-import { io } from "socket.io-client";
 import { OptionsSideBar } from "@/components/containers/options-side-bar/options-side-bar";
-import Image from "next/image";
-
-import placeholder from "@/public/images/placeholder.png";
 import { SettingsSidebar } from "@/components/containers/settings-sidebar/settings-sidebar";
+import { IChat } from "../../../shared/types/i-chat";
 
 export type Conversation = {
   message: string;
   userId: string;
 };
 
-const socket = io("http://localhost:8080", {
-  transports: ["websocket", "polling"],
-});
+// const socket = io("http://localhost:8080", {
+//   transports: ["websocket", "polling"],
+// });
 
 export function ChatLayout() {
   const myId = "1235";
@@ -66,7 +58,7 @@ export function ChatLayout() {
     undefined
   );
 
-  const [wsKey, setWsKey] = useState<CryptoJS.lib.WordArray>();
+  // const [wsKey, setWsKey] = useState<CryptoJS.lib.WordArray>();
 
   // useEffect(() => {
   //   socket.on("connect", () => {
@@ -100,7 +92,7 @@ export function ChatLayout() {
 
   return (
     <div className="flex h-screen w-screen items-center justify-center bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600">
-      <div className="flex  flex-row h-full w-full shadow-2xl">
+      <div className="flex flex-row h-full w-full shadow-2xl">
         <OptionsSideBar />
         <ChatListSide onSelectChat={setChatSelected} />
         <ChatSide

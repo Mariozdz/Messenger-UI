@@ -2,7 +2,7 @@ import { overrideTailwindClasses } from "tailwind-override";
 
 type TabButtonProps = {
   label: string;
-  onClick?: Function;
+  onClick?: () => any;
   containerClassName?: string;
 };
 

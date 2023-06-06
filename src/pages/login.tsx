@@ -1,6 +1,6 @@
 import Toggle from "@/components/common/toggle";
-import { LoginForm } from "@/components/containers/forms/authorization/login-form";
-import { SignUpForm } from "@/components/containers/forms/authorization/sign-up-form";
+import { LoginForm } from "@/components/containers/forms/authentication/login/login-form";
+import { SignUpForm } from "@/components/containers/forms/authentication/sign-up-form";
 import { useState } from "react";
 
 function LoginPage() {

@@ -1,4 +1,3 @@
-import type { NextPage } from "next";
 import { ChatLayout } from "src/components/layouts/home/chat-layout";
 
 interface HomePageProps {
@@ -6,7 +5,7 @@ interface HomePageProps {
     Number: string;
     Zone: string;
     state: string;
-    username: String;
+    username: string;
   };
   groups: {
     members: [];
@@ -18,11 +17,14 @@ interface HomePageProps {
   };
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export default function Page({ userData, groups }: HomePageProps) {
   return <ChatLayout />;
 }
 
-export async function getServerSideProps() {
+export async function getServerSideProps(context: any) {
+  const { phoneNumber } = context.query;
+
   //   const user = await fetch(`http://localhost:8080/User/+506/60032274`, {
   //     method: "GET",
   //     // headers: {
@@ -34,12 +36,12 @@ export async function getServerSideProps() {
   //   const groups = await fetch("http://localhost:8080/Groups/+506/60032274");
 
   // const userData = await user.json();
-  // const grupsData = await groups.json();
+  // const groupsData = await groups.json();
 
   return {
     props: {
       userData: {
-        Number: "number",
+        Number: phoneNumber || "",
         Zone: "number",
         state: "state",
         username: "username",

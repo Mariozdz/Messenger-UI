@@ -1,9 +1,9 @@
 import Image from "next/image";
-import { IChat } from "src/shared/types/common/i-chat";
 import dogImage from "../../../public/images/doggi.jpg";
 import { overrideTailwindClasses } from "tailwind-override";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { IChat } from "../../shared/types/i-chat";
 
 type IChatCardProps = {
   setChatSelected: (value: IChat) => void;
@@ -12,10 +12,19 @@ type IChatCardProps = {
 
 export function ChatCard({ setChatSelected, chat }: IChatCardProps) {
   const date = new Date();
+
+  const chatName =
+    chat?.members.length > 0 ? chat.members[0].UserName : chat.groupName;
+
+  const chatDescription =
+    chat?.messages && chat?.messages?.length > 0
+      ? chat.messages[0].content
+      : "...";
+
   return (
     <div
       className={overrideTailwindClasses(
-        "transition ease-in-out duration-100 flex flex-row shadow-md w-full border-b border-gray-600 h-32 px-5 cursor-pointer hover:h-34"
+        "flex shadow-md w-full border-b border-gray-600 h-32 px-5 cursor-pointer"
       )}
       onClick={() => {
         setChatSelected(chat);
@@ -26,10 +35,14 @@ export function ChatCard({ setChatSelected, chat }: IChatCardProps) {
           <Image src={dogImage} className="rounded-full" alt="#_" />
         </div>
       </div>
-      <div className="flex flex-col w-full justify-center ml-6">
-        <div className="text-white font-semibold text-xl">{chat.name}</div>
-        <div className=" text-lg text-gray-600"> {chat.message}</div>
+
+      <div className="flex flex-col flex-grow justify-center ml-6">
+        <div className="flex text-white font-semibold text-xl">{chatName}</div>
+        <span className=" max-w-124 mr-1 text-lg text-gray-600 w-full text-ellipsis overflow-hidden whitespace-nowrap">
+          {chatDescription}
+        </span>
       </div>
+
       <div className="flex flex-col items-center justify-center pr-3">
         <div className="flex text-white">{date.toTimeString().slice(0, 5)}</div>
         <div className="flex flex-row relative">

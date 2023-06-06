@@ -1,6 +1,5 @@
 import { faFaceLaugh, faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useState } from "react";
 import { useActionFooter } from "./use-action-footer";
 
 type ActionFooterProps = {
@@ -23,7 +22,7 @@ export function ActionFooter({ handleInputSubmit }: ActionFooterProps) {
           width={40}
         />
       </div>
-      <div className="flex flex-grow items-center h-12 rounded-lg p-2 mx-16">
+      <div className="flex border border-gray-700 flex-grow rounded-lg items-center h-14 outline-0 mx-16">
         <textarea
           value={inputValue}
           onKeyDown={handleOnPressEnter}
@@ -31,7 +30,7 @@ export function ActionFooter({ handleInputSubmit }: ActionFooterProps) {
             setInputValue(value.target.value);
           }}
           placeholder="Write something"
-          className="w-full border-none style-none border-0 outline-0 bg-back bg-opacity-80 text-white scrollbar resize-none"
+          className="flex px-3 w-full items-center border-none style-none border-0 outline-0 bg-back bg-opacity-80 text-white scrollbar resize-none"
         />
       </div>
       <button

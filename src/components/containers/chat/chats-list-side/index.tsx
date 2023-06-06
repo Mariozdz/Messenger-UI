@@ -1,8 +1,6 @@
 import { useState } from "react";
 import { ChatCard } from "src/components/common/chat-card";
-import { IChat } from "src/shared/types/common/i-chat";
 import { v4 as uuidv4 } from "uuid";
-import Image from "next/image";
 
 import dogImage from "../../../../../public/images/doggi.jpg";
 import { ChatListHeader } from "./chat-list-header";
@@ -11,28 +9,14 @@ import { overrideTailwindClasses } from "tailwind-override";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEllipsis } from "@fortawesome/free-solid-svg-icons";
 import { CurrentUserHeader } from "@/components/common/headers/current-user-header";
+import { UserChatsStub } from "../../../../shared/stubs/chat-stub";
+import { IChat } from "../../../../shared/types/i-chat";
 
 type ChatListSideProps = {
   onSelectChat: (value: IChat) => void;
 };
 
 export function ChatListSide({ onSelectChat }: ChatListSideProps) {
-  const chats: IChat[] = [
-    { name: "Prro 1 ", message: "Hola" },
-    { name: "Prro 1 ", message: "Hola" },
-    { name: "Prro 1 ", message: "Hola" },
-    { name: "Prro 1 ", message: "Hola" },
-    { name: "Prro 1 ", message: "Hola" },
-    { name: "Prro 1 ", message: "Hola" },
-    { name: "Prro 1 ", message: "Hola" },
-    { name: "Prro 1 ", message: "Hola" },
-    { name: "Prro 1 ", message: "Hola" },
-    { name: "Prro 1 ", message: "Hola" },
-    { name: "Prro 2 ", message: "Hola" },
-    { name: "Prro 3 ", message: "Hola" },
-    { name: "Prro 4 ", message: "Hola" },
-  ];
-
   const [inputValue, setInputValue] = useState<string>("");
 
   return (
@@ -68,8 +52,8 @@ export function ChatListSide({ onSelectChat }: ChatListSideProps) {
         onChangeSearchValue={setInputValue}
       />
 
-      <div className="overflow-hidden hover:overflow-y-scroll scrollbar bg-back bg-opacity-80">
-        {chats.map((chat) => (
+      <div className="overflow-hidden hover:overflow-y-scroll scrollbar h-full bg-back bg-opacity-80">
+        {UserChatsStub.map((chat) => (
           <ChatCard chat={chat} setChatSelected={onSelectChat} key={uuidv4()} />
         ))}
       </div>

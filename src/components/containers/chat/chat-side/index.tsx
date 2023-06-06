@@ -1,17 +1,13 @@
-import { useEffect, useRef, useState } from "react";
 import { Header } from "src/components/common/header";
 import { Message } from "src/components/common/messages/message";
 import { MessageContainer } from "src/components/common/messages/message-container";
-import { Conversation } from "src/components/layouts/home/chat-layout";
-import { IChat } from "src/shared/types/common/i-chat";
 import dogImage from "@/public/images/doggi.jpg";
 import { v4 } from "uuid";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFaceLaugh, faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 import { useChatSide } from "./use-chat-side";
 import { ActionFooter } from "../chats-list-side/action-footer";
 import clsx from "clsx";
-import Toggle from "@/components/common/toggle";
+import { IChat } from "../../../../shared/types/i-chat";
+import { Conversation } from "@/components/layouts/home/chat-layout";
 
 type ChatSideProps = {
   selectedChat?: IChat;
@@ -36,6 +32,11 @@ export function ChatSide({
     myId,
   });
 
+  const chatName =
+    selectedChat && selectedChat?.members.length > 1
+      ? selectedChat?.groupName
+      : selectedChat?.members[0].UserName;
+
   return (
     <div
       className={clsx(
@@ -45,7 +46,7 @@ export function ChatSide({
     >
       <Header
         image={dogImage}
-        title={selectedChat?.name}
+        title={chatName}
         handleOpenSettings={handleOpenSettings}
         settingsState={settingsState}
       />
