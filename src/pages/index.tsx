@@ -1,8 +1,13 @@
-import type { NextPage } from "next";
-import { ChatLayout } from "src/components/layouts/home/chat-layout";
+export default function Page() {
+  return <></>;
+}
 
-const Home: NextPage = () => {
-  return <ChatLayout />;
-};
-
-export default Home;
+export async function getServerSideProps() {
+  return {
+    redirect: {
+      destination: "/login",
+      permanent: false,
+    },
+    props: {},
+  };
+}

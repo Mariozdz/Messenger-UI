@@ -1,21 +1,24 @@
 import { Conversation } from "@/components/layouts/home/chat-layout";
-import { KeyboardEventHandler, MutableRefObject, useEffect, useRef, useState } from "react";
+import { MutableRefObject, useEffect, useRef, useState } from "react";
 
 type IUseChatSideProps = {
-    userId: string;
-    myId: string;
-    conversations: Conversation[];
-}
+  userId: string;
+  myId: string;
+  conversations: Conversation[];
+};
 
 type IUseChatSideHook = {
-    chat: Conversation[],
-    handleInputSubmit: () => void,
-    messagesEndRef: MutableRefObject<any>,
-}
+  chat: Conversation[];
+  handleInputSubmit: () => void;
+  messagesEndRef: MutableRefObject<any>;
+};
 
-export function useChatSide( {conversations, userId, myId}: IUseChatSideProps): IUseChatSideHook {
-
- const [counter, setCounter] = useState<number>(0);
+export function useChatSide({
+  conversations,
+  userId,
+  myId,
+}: IUseChatSideProps): IUseChatSideHook {
+  const [counter, setCounter] = useState<number>(0);
 
   const [chat, setChat] = useState<Conversation[]>(conversations);
 
@@ -32,7 +35,9 @@ export function useChatSide( {conversations, userId, myId}: IUseChatSideProps): 
   }, [chat]);
 
   function handleInputSubmit() {
-    if (!inputValue) return;
+    if (!inputValue) {
+      return;
+    }
 
     setChat((prev) => [
       ...prev,
@@ -46,13 +51,9 @@ export function useChatSide( {conversations, userId, myId}: IUseChatSideProps): 
     setCounter((prev) => prev + 1);
   }
 
-
-
   return {
-
     chat,
     handleInputSubmit,
     messagesEndRef,
-  }
-
+  };
 }

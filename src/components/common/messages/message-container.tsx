@@ -8,6 +8,7 @@ type MessageContainerProps = {
 
 export function MessageContainer({
   isMine = false,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   message,
   children,
 }: MessageContainerProps) {

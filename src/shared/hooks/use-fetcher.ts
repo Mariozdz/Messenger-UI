@@ -1,7 +1,6 @@
-import { useMutation, useQuery, useQueryClient } from "react-query"
+import { useQueryClient } from "react-query";
 
 export function useFetcher() {
-    // Access the client
-   const queryClient = useQueryClient()
- 
+  // eslint-disable-next-line no-unused-vars,@typescript-eslint/no-unused-vars
+  const queryClient = useQueryClient();
 }
