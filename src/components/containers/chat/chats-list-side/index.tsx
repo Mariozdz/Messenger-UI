@@ -9,15 +9,20 @@ import { overrideTailwindClasses } from "tailwind-override";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEllipsis } from "@fortawesome/free-solid-svg-icons";
 import { CurrentUserHeader } from "@/components/common/headers/current-user-header";
-import { UserChatsStub } from "../../../../shared/stubs/chat-stub";
 import { IChat } from "../../../../shared/types/i-chat";
+import { useStoreState } from "../../../../shared/hooks/store-hook";
 
 type ChatListSideProps = {
   onSelectChat: (value: IChat) => void;
+  groups: IChat[];
 };
 
-export function ChatListSide({ onSelectChat }: ChatListSideProps) {
+export function ChatListSide({ onSelectChat, groups }: ChatListSideProps) {
   const [inputValue, setInputValue] = useState<string>("");
+
+  const user = useStoreState((state) => state.user);
+
+  console.log(groups);
 
   return (
     <div className="flex flex-col h-full w-full md:w-1/3 border border-gray-600">
@@ -29,7 +34,7 @@ export function ChatListSide({ onSelectChat }: ChatListSideProps) {
         )}
       >
         <CurrentUserHeader
-          userName="Perro pelón"
+          userName={user.userName || "Undefined"}
           lastTime="Ingeniero"
           userPhoto={dogImage}
         />
@@ -53,7 +58,7 @@ export function ChatListSide({ onSelectChat }: ChatListSideProps) {
       />
 
       <div className="overflow-hidden hover:overflow-y-scroll scrollbar h-full bg-back bg-opacity-80">
-        {UserChatsStub.map((chat) => (
+        {groups.map((chat) => (
           <ChatCard chat={chat} setChatSelected={onSelectChat} key={uuidv4()} />
         ))}
       </div>

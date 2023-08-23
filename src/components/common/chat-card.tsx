@@ -1,5 +1,4 @@
 import Image from "next/image";
-import dogImage from "../../../public/images/doggi.jpg";
 import { overrideTailwindClasses } from "tailwind-override";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -13,8 +12,10 @@ type IChatCardProps = {
 export function ChatCard({ setChatSelected, chat }: IChatCardProps) {
   const date = new Date();
 
+  const { groupName, url } = chat;
+
   const chatName =
-    chat?.members.length > 0 ? chat.members[0].UserName : chat.groupName;
+    chat?.members.length > 0 ? groupName : chat.members[0].userName;
 
   const chatDescription =
     chat?.messages && chat?.messages?.length > 0
@@ -31,8 +32,20 @@ export function ChatCard({ setChatSelected, chat }: IChatCardProps) {
       }}
     >
       <div className="flex items-center justify-center">
-        <div className="rounded-full w-18 h-18 bg-black">
-          <Image src={dogImage} className="rounded-full" alt="#_" />
+        <div className="rounded-full w-18 h-18 bg-purple-600">
+          {url ? (
+            <Image
+              src={`${url}`}
+              width={100}
+              height={100}
+              className="rounded-full"
+              alt="#_"
+            />
+          ) : (
+            <div className="flex h-full items-center justify-center text-4xl text-white front-bold">
+              {(chatName && chatName[0]) || "A"}
+            </div>
+          )}
         </div>
       </div>
 

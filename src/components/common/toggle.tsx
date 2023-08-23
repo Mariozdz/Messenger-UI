@@ -2,7 +2,7 @@ import { useState } from "react";
 
 interface ToogleProps {
   onChangeValue: (value: boolean) => void;
-  initalValue?: boolean;
+  initialValue?: boolean;
 }
 
 /**
@@ -11,9 +11,9 @@ interface ToogleProps {
 
 export default function Toggle({
   onChangeValue,
-  initalValue = false,
+  initialValue = false,
 }: ToogleProps) {
-  const [toggle, setToggle] = useState(initalValue);
+  const [toggle, setToggle] = useState(initialValue);
 
   return (
     <div

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { UserState } from "../../../shared/constants/user-state";
 import clsx from "clsx";
+import { useStoreState } from "../../../shared/hooks/store-hook";
 
 interface CurrentUserHeaderProps {
   userName: string;
@@ -13,13 +14,22 @@ export function CurrentUserHeader({
   userName,
   lastTime,
   state = UserState.ACTIVE,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   userPhoto,
 }: CurrentUserHeaderProps) {
+  const { url } = useStoreState((state) => state.user);
+
   return (
     <>
       <div className="w-16">
         <div className="rounded-full  w-16 h-16 bg-black">
-          <Image src={userPhoto} className="rounded-full" alt="_#" />
+          <Image
+            src={`${url}`}
+            width={100}
+            height={100}
+            className="rounded-full"
+            alt="_#"
+          />
         </div>
       </div>
       <div className="flex flex-col flex-grow ml-3 text-lg font-semibold">

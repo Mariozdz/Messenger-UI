@@ -1,26 +1,15 @@
 import { Conversation } from "@/components/layouts/home/chat-layout";
 import { MutableRefObject, useEffect, useRef, useState } from "react";
 
-type IUseChatSideProps = {
-  userId: string;
-  myId: string;
-  conversations: Conversation[];
-};
-
 type IUseChatSideHook = {
-  chat: Conversation[];
   handleInputSubmit: () => void;
   messagesEndRef: MutableRefObject<any>;
 };
 
-export function useChatSide({
-  conversations,
-  userId,
-  myId,
-}: IUseChatSideProps): IUseChatSideHook {
+export function useChatSide(): IUseChatSideHook {
   const [counter, setCounter] = useState<number>(0);
 
-  const [chat, setChat] = useState<Conversation[]>(conversations);
+  const [chat, setChat] = useState<Conversation[]>([]);
 
   const [inputValue, setInputValue] = useState<string>("");
 
@@ -43,7 +32,7 @@ export function useChatSide({
       ...prev,
       {
         message: inputValue,
-        userId: counter % 2 === 0 ? myId : userId,
+        userId: "",
       },
     ]);
     setInputValue("");
@@ -52,7 +41,6 @@ export function useChatSide({
   }
 
   return {
-    chat,
     handleInputSubmit,
     messagesEndRef,
   };
