@@ -17,7 +17,7 @@ export const UserStub: IUser = {
   phoneNumber: "88445544",
   zoneCode: "506",
   state: "Hola mundo",
-  UserName: "Perro pelón",
+  userName: "Perro pelón",
   url: "",
 };
 

@@ -8,12 +8,12 @@ export abstract class CryptoUtils {
     return enc.Hex.parse(key);
   }
 
-  static decryptText(
+  static decryptText<T>(
     encryptedText: string,
     key?: CryptoJS.lib.WordArray
-  ): string | object {
+  ): T | undefined {
     if (!key) {
-      return {};
+      return;
     }
 
     const plain = AES.decrypt(encryptedText, key, {
@@ -24,7 +24,9 @@ export abstract class CryptoUtils {
 
     const decryptText = plain.toString(enc.Utf8);
 
-    return JSON.stringify(decryptText);
+    const result: T = JSON.parse(decryptText);
+
+    return result;
   }
 
   static encryptObject(object: any, key: CryptoJS.lib.WordArray): string {

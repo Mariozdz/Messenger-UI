@@ -9,7 +9,7 @@ const initialState: IUser = {
   phoneNumber: undefined,
   zoneCode: undefined,
   state: undefined,
-  UserName: undefined,
+  userName: undefined,
   url: undefined,
 };
 
@@ -17,7 +17,11 @@ const userModel: UserModel = {
   ...initialState,
   setUser: action((state, payload) => {
     if (payload) {
-      state = payload;
+      state.phoneNumber = payload.phoneNumber;
+      state.zoneCode = payload.phoneNumber;
+      state.state = payload.state;
+      state.userName = payload.userName;
+      state.url = payload.url;
     }
   }),
 };
